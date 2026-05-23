@@ -6,27 +6,26 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
-@Schema(description = "DTO de usuario")
-public class UserDTO {
+
+@Schema(description = "DTO de la locación")
+public class LocationDTO {
     @Schema(description = "Código interno asignado por el sistema")
     private Integer id;
-    @Schema(description = "Nickname corto para identificar al usuario", example = "Juan Pérez")
+    @Schema(description = "Código corto para identificar a la locacion", example = "01 / 1A / A35")
     @NotBlank
-    @Size(max = 15)
+    @Size(max = 4)
     @Pattern(
             regexp = "^\\S+$",
-            message = "El usuario no puede contener espacios"
+            message = "El código no puede contener espacios"
     )
-    private String user;
-    @Schema(description = "Nombre completo del usuario", example = "Juan Pérez")
-    @NotBlank
-    private String names;
-//    private Integer role;
-    @Schema(description = "Fecha de creación del usuario")
+    private String code;
+    @Schema(description = "Código del territorio")
+    private Integer territoryId;
+    @Schema(description = "Fecha de creación de la locación")
     private LocalDate createdAt;
-    @Schema(description = "Fecha de la última modificación del usuario")
+    @Schema(description = "Fecha de la última modificación de la locación")
     private LocalDate updatedAt;
-    @Schema(description = "Fecha de la eliminación del usario, si este campo no está vacío indica que el usuario está eliminado")
+    @Schema(description = "Fecha de la eliminación de la locación, si este campo no está vacío indica que la locación está eliminada")
     private LocalDate deletedAt;
 
     public Integer getId() {
@@ -37,22 +36,21 @@ public class UserDTO {
         this.id = id;
     }
 
-    public String getUser() {
-        return user;
+    public String getCode() {
+        return code;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public String getNames() {
-        return names;
+    public Integer getTerritoryId() {
+        return territoryId;
     }
 
-    public void setNames(String names) {
-        this.names = names;
+    public void setTerritoryId(Integer territoryId) {
+        this.territoryId = territoryId;
     }
-
 
     public LocalDate getCreatedAt() {
         return createdAt;
