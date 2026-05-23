@@ -8,6 +8,8 @@ RUN chmod +x gradlew
 
 RUN ./gradlew build -x test
 
+RUN ls build/libs
+
 EXPOSE 8080
 
-CMD ["java", "-jar", "build/libs/territorios-0.0.1-SNAPSHOT.jar"]
+CMD ["sh", "-c", "java -jar build/libs/*.jar"]
