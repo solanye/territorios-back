@@ -13,8 +13,14 @@ public class Log {
     private String text;
     @Column(name = "user")
     private Integer userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user", insertable = false, updatable = false)
+    private User user;
     @Column(name = "location")
     private Integer locationId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "location", insertable = false, updatable = false)
+    private Location location;
     @Column(name = "created_at")
     private LocalDate createdAt;
 
@@ -78,5 +84,21 @@ public class Log {
 
     public void setDeletedAt(LocalDate deletedAt) {
         this.deletedAt = deletedAt;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 }

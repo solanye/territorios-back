@@ -19,8 +19,12 @@ public class LocationDTO {
             message = "El código no puede contener espacios"
     )
     private String code;
-    @Schema(description = "Código del territorio")
+    @Schema(description = "Ubicación de la locación en google maps, este campo es opcional y puede estar vacío")
+    private String maps;
+    @Schema(description = "Código interno del territorio")
     private Integer territoryId;
+    @Schema(description = "Código externo del territorio", accessMode = Schema.AccessMode.READ_ONLY)
+    private String territoryCode;
     @Schema(description = "Fecha de creación de la locación")
     private LocalDate createdAt;
     @Schema(description = "Fecha de la última modificación de la locación")
@@ -74,5 +78,21 @@ public class LocationDTO {
 
     public void setDeletedAt(LocalDate deletedAt) {
         this.deletedAt = deletedAt;
+    }
+
+    public String getMaps() {
+        return maps;
+    }
+
+    public void setMaps(String maps) {
+        this.maps = maps;
+    }
+
+    public String getTerritoryCode() {
+        return territoryCode;
+    }
+
+    public void setTerritoryCode(String territoryCode) {
+        this.territoryCode = territoryCode;
     }
 }

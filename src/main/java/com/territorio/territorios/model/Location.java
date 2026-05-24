@@ -11,8 +11,13 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String code;
+    private String maps;
     @Column(name = "territory")
     private Integer territoryId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "territory", insertable = false, updatable = false)
+    private Territory territory;
+
     @Column(name = "created_at")
     private LocalDate createdAt;
 
@@ -68,5 +73,21 @@ public class Location {
 
     public void setDeletedAt(LocalDate deletedAt) {
         this.deletedAt = deletedAt;
+    }
+
+    public String getMaps() {
+        return maps;
+    }
+
+    public void setMaps(String maps) {
+        this.maps = maps;
+    }
+
+    public Territory getTerritory() {
+        return territory;
+    }
+
+    public void setTerritory(Territory territory) {
+        this.territory = territory;
     }
 }

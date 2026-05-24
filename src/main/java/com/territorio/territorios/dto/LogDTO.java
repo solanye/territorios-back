@@ -16,6 +16,8 @@ public class LogDTO {
     private Integer locationId;
     @Schema(description = "Código del usuario que hizo la anotación")
     private Integer userId;
+    @Schema(description = "Nombre del usuario que hizo la anotación", accessMode = Schema.AccessMode.READ_ONLY)
+    private String userName;
     @Schema(description = "Fecha de creación de la locación")
     private LocalDate createdAt;
     @Schema(description = "Fecha de la última modificación de la locación")
@@ -77,5 +79,13 @@ public class LogDTO {
 
     public void setDeletedAt(LocalDate deletedAt) {
         this.deletedAt = deletedAt;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }
